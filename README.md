@@ -1,6 +1,6 @@
 # SendScriptTelegram
 
-Código para enviar el script entero de Shrek o Bee Movie fork de travaz para contraatacar posibles scammers por telegram.
+Código para enviar el guion entero de Shrek o Bee Movie para "contraatacar" posibles scammers por telegram.
 
 ## Uso
 
@@ -14,4 +14,4 @@ Abrir la consola estando en la version web de Telegram
 
 Pegar codigo en la tab de consola y presionar enter
 
-Credito tambien a  Matt-Fontes/SendScriptWhatsApp, pueden usar su script si quieren aplicar lo mismo pero desde whatsapp.
+Credito a  [Matt-Fontes/SendScriptWhatsApp](https://github.com/Matt-Fontes/SendScriptWhatsApp), pueden usar su script si quieren aplicar lo mismo pero desde whatsapp.
