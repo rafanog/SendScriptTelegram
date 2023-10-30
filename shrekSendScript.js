@@ -13,7 +13,7 @@ async function enviarScript(scriptText){
 		textarea.dispatchEvent(new Event('change', {bubbles: true}));
 	
 		setTimeout(() => {
-			(main.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button')).click();
+			(document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button')).click();
 		}, 100);
 		
 		if(lines.indexOf(line) !== lines.length - 1) await new Promise(resolve => setTimeout(resolve, 250));
