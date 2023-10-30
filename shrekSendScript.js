@@ -11,19 +11,15 @@ async function enviarScript(scriptText) {
     document.execCommand('insertText', false, line);
     textarea.dispatchEvent(new Event('change', { bubbles: true }));
 
-    // Verificar si el botón de envío existe
+    // Pausa implícita de un segundo antes de hacer clic en el botón
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     const sendButton = document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button');
     if (!sendButton) {
       throw new Error("Send button not found");
     }
 
-    // Agregar una pausa de 1 segundo (1000 milisegundos) antes de hacer clic en el botón
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
     sendButton.click();
-
-    // Otra pausa opcional después de hacer clic en el botón
-    // await new Promise(resolve => setTimeout(resolve, 1000));
   }
 
   return lines.length;
