@@ -1,25 +1,32 @@
-async function enviarScript(scriptText){
-	const lines = scriptText.split(/[\n\t]+/).map(line => line.trim()).filter(line => line);
-	//main = document.querySelector("#main"),
-	textarea = document.querySelector(`.input-message-container`)
-	
-	if(!textarea) throw new Error("No conversation open")
-	
-	for(const line of lines){
-		console.log(line)
-	
-		textarea.focus();
-		document.execCommand('insertText', false, line);
-		textarea.dispatchEvent(new Event('change', {bubbles: true}));
-	
-		setTimeout(() => {
-			(document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button')).click();
-		}, 100);
-		
-		if(lines.indexOf(line) !== lines.length - 1) await new Promise(resolve => setTimeout(resolve, 250));
-	}
-	
-	return lines.length;
+async function enviarScript(scriptText) {
+  const lines = scriptText.split(/[\n\t]+/).map(line => line.trim()).filter(line => line);
+  const textarea = document.querySelector('.input-message-container');
+
+  if (!textarea) throw new Error("No conversation open");
+
+  for (const line of lines) {
+    console.log(line);
+
+    textarea.focus();
+    document.execCommand('insertText', false, line);
+    textarea.dispatchEvent(new Event('change', { bubbles: true }));
+
+    // Verificar si el botón de envío existe
+    const sendButton = document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button');
+    if (!sendButton) {
+      throw new Error("Send button not found");
+    }
+
+    // Agregar una pausa de 1 segundo (1000 milisegundos) antes de hacer clic en el botón
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    sendButton.click();
+
+    // Otra pausa opcional después de hacer clic en el botón
+    // await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+
+  return lines.length;
 }
 
 enviarScript(`
