@@ -11,6 +11,9 @@ async function enviarScript(scriptText) {
     document.execCommand('insertText', false, line);
     textarea.dispatchEvent(new Event('change', { bubbles: true }));
 
+    // Pausa implícita de un segundo antes de verificar y hacer clic
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
     const sendButton = document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button');
     if (!sendButton) {
       throw new Error("Send button not found");
