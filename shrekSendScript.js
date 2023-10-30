@@ -1,7 +1,7 @@
 async function enviarScript(scriptText){
 	const lines = scriptText.split(/[\n\t]+/).map(line => line.trim()).filter(line => line);
 	//main = document.querySelector("#main"),
-	textarea = main.querySelector(`.input-message-container`)
+	textarea = document.querySelector(`.input-message-container`)
 	
 	if(!textarea) throw new Error("No conversation open")
 	
