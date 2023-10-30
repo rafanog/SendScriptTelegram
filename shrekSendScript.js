@@ -14,7 +14,7 @@ async function enviarScript(scriptText) {
     // Pausa implícita de un segundo antes de hacer clic en el botón
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    const sendButton = document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button');
+    const sendButton = document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button > span.tgico.animated-button-icon-icon.btn-send-icon-send');
     if (!sendButton) {
       throw new Error("Send button not found");
     }
