@@ -20,6 +20,9 @@ async function enviarScript(scriptText) {
     }
 
     sendButton.click();
+
+    // Pausa implícita de un segundo después de hacer clic en el botón
+    await new Promise(resolve => setTimeout(resolve, 1000));
   }
 
   return lines.length;
