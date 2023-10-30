@@ -1,17 +1,15 @@
-# SendScriptWhatsApp
+# SendScriptTelegram
 
-Código para enviar o Script inteiro de Shrek ou Bee Movie para seus amigos ou grupos do WhatsApp
+Código para enviar el script entero de Shrek o Bee Movie fork de travaz para contraatacar posibles scammers por telegram.
 
-## Utilização
+## Uso
 
-Abra [shrekSendScript.js](https://github.com/Matt-Fontes/SendScriptWhatsApp/blob/main/shrekSendScript.js)
-Ou
-Abra [beeMovieSendScript.js](https://github.com/Matt-Fontes/SendScriptWhatsApp/blob/main/beeMovieSendScript.js)
+Abrir [shrekSendScript.js](https://github.com/Matt-Fontes/SendScriptWhatsApp/blob/main/shrekSendScript.js)
+O
+[beeMovieSendScript.js](https://github.com/Matt-Fontes/SendScriptWhatsApp/blob/main/beeMovieSendScript.js)
 
-Copie todo o conteúdo (clique em raw -> ctrl+a -> ctrl+c)
+Copiar todo el contenido (clique em raw -> ctrl+a -> ctrl+c)
 
-No WhatsApp Web abra o console do Browser
+Abrir la consola estando en la version web de Telegram
 
-Cole o código no console e aperte Enter
-
-Pronto
+Pegar codigo en la tab de consola y presionar enter
