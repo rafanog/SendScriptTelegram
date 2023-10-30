@@ -11,15 +11,20 @@ async function enviarScript(scriptText) {
     document.execCommand('insertText', false, line);
     textarea.dispatchEvent(new Event('change', { bubbles: true }));
 
-    // Pausa implícita de un segundo antes de hacer clic en el botón
+    // Pausa implícita de un segundo antes de verificar y hacer clic
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    const sendButton = document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button > span.tgico.animated-button-icon-icon.btn-send-icon-send');
+    const sendButton = document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button');
     if (!sendButton) {
       throw new Error("Send button not found");
     }
 
-    sendButton.click();
+    // Verificar si el botón de enviar está visible y no deshabilitado
+    if (sendButton.offsetParent !== null && !sendButton.disabled) {
+      sendButton.click();
+    } else {
+      throw new Error("Send button is not visible or clickable");
+    }
 
     // Pausa implícita de un segundo después de hacer clic en el botón
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -27,6 +32,7 @@ async function enviarScript(scriptText) {
 
   return lines.length;
 }
+
 
 enviarScript(`
 SHREK
