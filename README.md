@@ -13,3 +13,5 @@ Copiar todo el contenido (clique em raw -> ctrl+a -> ctrl+c)
 Abrir la consola estando en la version web de Telegram
 
 Pegar codigo en la tab de consola y presionar enter
+
+Credito tambien a  Matt-Fontes/SendScriptWhatsApp, pueden usar su script si quieren aplicar lo mismo pero desde whatsapp.
