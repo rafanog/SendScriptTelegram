@@ -1,25 +1,36 @@
-async function enviarScript(scriptText){
-	const lines = scriptText.split(/[\n\t]+/).map(line => line.trim()).filter(line => line);
-	main = document.querySelector("#main"),
-	textarea = main.querySelector(`div[contenteditable="true"]`)
-	
-	if(!textarea) throw new Error("Não há uma conversa aberta")
-	
-	for(const line of lines){
-		console.log(line)
-	
-		textarea.focus();
-		document.execCommand('insertText', false, line);
-		textarea.dispatchEvent(new Event('change', {bubbles: true}));
-	
-		setTimeout(() => {
-			(main.querySelector(`[data-testid="send"]`) || main.querySelector(`[data-icon="send"]`)).click();
-		}, 100);
-		
-		if(lines.indexOf(line) !== lines.length - 1) await new Promise(resolve => setTimeout(resolve, 250));
-	}
-	
-	return lines.length;
+async function enviarScript(scriptText) {
+  const lines = scriptText.split(/[\n\t]+/).map(line => line.trim()).filter(line => line);
+  const textarea = document.querySelector('.input-message-container');
+
+  if (!textarea) throw new Error("No conversation open");
+
+  for (const line of lines) {
+    console.log(line);
+
+    textarea.focus();
+    document.execCommand('insertText', false, line);
+    textarea.dispatchEvent(new Event('change', { bubbles: true }));
+
+    // Pausa implícita de un segundo antes de verificar y hacer clic
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const sendButton = document.querySelector('#column-center > div > div > div.chat-input.chat-input-main > div > div.btn-send-container > button');
+    if (!sendButton) {
+      throw new Error("Send button not found");
+    }
+
+    // Verificar si el botón de enviar está visible y no deshabilitado
+    if (sendButton.offsetParent !== null && !sendButton.disabled) {
+      sendButton.click();
+    } else {
+      throw new Error("Send button is not visible or clickable");
+    }
+
+    // Pausa implícita de un segundo después de hacer clic en el botón
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+
+  return lines.length;
 }
 
 enviarScript(`
